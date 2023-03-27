@@ -1,0 +1,109 @@
+.status-board {
+  display: flex;
+  flex-direction: column;
+}
+.status-board .status-board-tools {
+  display: flex;
+  flex-direction: column;
+}
+.status-board .title {
+  font-family: Roboto, serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.status-board .tools {
+  display: flex;
+  justify-content: flex-end;
+}
+.status-board .tools img {
+  height: 14px;
+  width: 14px;
+}
+.status-board .tool {
+  margin-left: 11px;
+}
+.status-board .table .table-columns {
+  padding-top: 30px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+.status-board .table .table-columns table {
+  table-layout: auto;
+  border-collapse: collapse;
+}
+.status-board .table .table-columns table thead tr th:nth-child(3) {
+  padding-left: 27px;
+}
+.status-board .table .table-columns table thead tr th {
+  font-family: "Roboto", serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: left;
+}
+.status-board .table .table-columns table thead tr th:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(8)):not(:nth-child(9)) {
+  padding-left: 90px;
+}
+.status-board .table .table-columns table tbody tr {
+  border-bottom: 0.5px solid #C4C4C4;
+}
+.status-board .table .table-columns table tbody tr td.td-data {
+  font-family: "Roboto", serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #989898;
+  padding-bottom: 30px;
+  padding-top: 17px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: break-spaces;
+}
+.status-board .table .table-columns table tbody tr td:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(8)):not(:nth-child(9)) {
+  padding-left: 90px;
+}
+.status-board .table .table-columns table tbody tr td.td-data:nth-child(3) {
+  padding-left: 27px;
+}
+.status-board .table .table-columns table tbody tr td.td-data:nth-child(2) {
+  padding-left: 18px;
+}
+.status-board .table .table-columns table tbody tr td.td-data:nth-child(1) {
+  padding-left: 19px;
+}
+.status-board .table .table-columns table tbody tr td.td-data.logo .border-box {
+  box-sizing: border-box;
+  background: #FFFFFF;
+  position: relative;
+  display: flex;
+  height: 37px;
+  width: 37px;
+  justify-content: center;
+  align-items: center;
+}
+.status-board .table .table-columns table tbody tr td.td-data.logo .border-box img {
+  position: absolute;
+}
+.status-board .table .table-columns table tbody tr td.td-data.logo .border-box .ellipse {
+  height: 37px;
+  width: 37px;
+}
+.status-board .table .table-columns table tbody tr td.td-data.logo .border-box .picture {
+  height: 19px;
+  width: 16px;
+}
+.status-board .table .table-columns table tbody tr td.td-data.tool-editor {
+  padding-left: 25px;
+}
+.status-board .table .table-columns table tbody tr td.td-data.tool-deleter {
+  padding-left: 5px;
+  padding-right: 15px;
+}
+
+/*# sourceMappingURL=statusboard.css.map */

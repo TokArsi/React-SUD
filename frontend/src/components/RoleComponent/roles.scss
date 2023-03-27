@@ -1,0 +1,33 @@
+.title{
+  margin-bottom: 16px;
+}
+.block-wrapper{
+  display: flex;
+  flex-direction: column;
+  background-color: #2F76E6;
+  color: #FFFFFF;
+  filter: drop-shadow(0px 2px 12px rgba(0, 0, 0, 0.25));
+  border-radius: 8px;
+  margin-bottom: 11px;
+
+  .block-number{
+    padding: 22px 157px 0px 23px;
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 38px;
+    letter-spacing: 0em;
+    text-align: left;
+
+  }
+  .block-title{
+    padding: 4px 83px 18px 23px;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    white-space: nowrap;
+  }
+}
