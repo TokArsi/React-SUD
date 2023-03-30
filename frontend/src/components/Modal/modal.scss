@@ -48,7 +48,11 @@
           height: 2vh;
           input{
             height: 4vh;
+            border: 1px solid;
           }
+          .error{
+            border: 1px solid red;
+        }
         }
       }
       .buttons{

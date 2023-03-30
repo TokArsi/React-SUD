@@ -6,6 +6,7 @@ import BoardTitles from './models/board-titles-schema.js'
 import BoardData from './models/board-data-schema.js'
 import multer from "multer"
 import * as bodyParser from "express";
+import os from 'os';
 const corsOptions ={
     origin:'*',
     credentials:true,            //access-control-allow-credentials:true
@@ -109,4 +110,5 @@ app.put('/request-update', (req, res) => {
     })
     res.json(req.body);
 })
+
 

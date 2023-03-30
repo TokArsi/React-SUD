@@ -45,6 +45,10 @@
 }
 .modal .modal__content .container .content .inputs input {
   height: 4vh;
+  border: 1px solid;
+}
+.modal .modal__content .container .content .inputs .error {
+  border: 1px solid red;
 }
 .modal .modal__content .container .buttons {
   display: flex;

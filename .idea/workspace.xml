@@ -4,115 +4,73 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4235fc0f-2203-4524-b28a-bfeef79ca587" name="Changes" comment="Commit 2" />
+    <list default="true" id="27589d3e-4327-4267-877d-963e37f03c7f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/101.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/101.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/11.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/11.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/74.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/74.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/82.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/82.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/84.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/84.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/85.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/85.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/86.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/86.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/88.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/88.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/91.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/91.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/92.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/92.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/93.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/93.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/94.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/94.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/96.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/96.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/97.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/97.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/98.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/98.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/99.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/99.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Modal/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Modal/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Modal/modal.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Modal/modal.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Modal/modal.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Modal/modal.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/StatusBoard/StatusBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/StatusBoard/StatusBoard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/StatusBoard/statusboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/StatusBoard/statusboard.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager">
-    <option name="groupingKeys">
-      <option value="directory" />
-    </option>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Sass File" />
-        <option value="SCSS File" />
-        <option value="com.haulmont.rcb.arrow_function_component" />
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <excluded-from-favorite>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$/frontend" source="master" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </excluded-from-favorite>
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$/frontend" source="back+front" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$/frontend" value="master" />
-      </map>
-    </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/frontend" />
-    <option name="RESET_MODE" value="MIXED" />
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="fdd736b2-5a1f-411c-b7f6-7d9b5fdf5284" />
-        <option name="url" value="https://github.com/TokArsi/React-MongoDb-NodeJS.git" />
-      </UrlAndAccount>
-    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2KmMqSh2UJX8RxTKvmnNyUzq7Dk" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2NaQJgsZSpUG7MxCoY50jFoZEQV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "NewWatcherDialog.advanced.open": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "19.6.1",
-    "javascript.nodejs.core.library.typings.version": "18.14.0",
-    "last_opened_file_path": "C:/Users/Arsen/Documents/PR/Valorant",
-    "list.type.of.created.stylesheet": "SCSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2021.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "directory"
-    ]
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;19.6.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.15.11&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2021.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -121,238 +79,26 @@
       </map>
     </option>
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Arsen\Documents\DataBase\Valorant\backend\public" />
-      <recent name="C:\Users\Arsen\Documents\DataBase\Valorant\frontend\public\img" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Arsen\Documents\Valorant\valorant\public" />
-      <recent name="C:\Users\Arsen\Documents\Valorant\valorant\src\components\StatusBoard\img" />
-      <recent name="C:\Users\Arsen\Documents\Valorant\valorant\src\components\BottomComponent" />
-      <recent name="C:\Users\Arsen\Documents\Valorant\valorant\src\components\TopComponent" />
-      <recent name="C:\Users\Arsen\Documents\Valorant\valorant\src" />
-    </key>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4235fc0f-2203-4524-b28a-bfeef79ca587" name="Changes" comment="" />
-      <created>1674575495563</created>
+      <changelist id="27589d3e-4327-4267-877d-963e37f03c7f" name="Changes" comment="" />
+      <created>1679899644243</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1674575495563</updated>
-      <workItem from="1674575496940" duration="2869000" />
-      <workItem from="1675959206513" duration="157000" />
-      <workItem from="1676400114596" duration="1698000" />
-      <workItem from="1676403105913" duration="8342000" />
-      <workItem from="1676411548422" duration="155000" />
-      <workItem from="1676475961621" duration="1900000" />
-      <workItem from="1676542594617" duration="3044000" />
-      <workItem from="1676545680517" duration="1980000" />
-      <workItem from="1676555890327" duration="996000" />
-      <workItem from="1676633069700" duration="516000" />
-      <workItem from="1676718277568" duration="11000" />
-      <workItem from="1676724005184" duration="780000" />
-      <workItem from="1676736315749" duration="800000" />
-      <workItem from="1676737136574" duration="2153000" />
-      <workItem from="1676739323544" duration="7607000" />
-      <workItem from="1676750033460" duration="1003000" />
-      <workItem from="1676880145798" duration="8179000" />
-      <workItem from="1676902124548" duration="26000" />
-      <workItem from="1676902199702" duration="2435000" />
-      <workItem from="1676991017706" duration="1211000" />
-      <workItem from="1676998977977" duration="1393000" />
-      <workItem from="1677000387901" duration="475000" />
-      <workItem from="1677001368464" duration="886000" />
-      <workItem from="1677002275052" duration="6649000" />
-      <workItem from="1677055808406" duration="1880000" />
-      <workItem from="1677062323096" duration="448000" />
-      <workItem from="1677087624461" duration="10333000" />
-      <workItem from="1677261996601" duration="120000" />
-      <workItem from="1677269172869" duration="618000" />
-      <workItem from="1677310185845" duration="21757000" />
-      <workItem from="1677353381736" duration="1000" />
-      <workItem from="1677481881166" duration="8425000" />
-      <workItem from="1677506894534" duration="3188000" />
-      <workItem from="1677526241563" duration="6493000" />
-      <workItem from="1677589800458" duration="7326000" />
-      <workItem from="1677598652087" duration="4632000" />
-      <workItem from="1677664080860" duration="813000" />
-      <workItem from="1677666203373" duration="5033000" />
-      <workItem from="1677701194897" duration="8001000" />
-      <workItem from="1677751952702" duration="4784000" />
-      <workItem from="1677756805116" duration="905000" />
-      <workItem from="1677760245156" duration="5195000" />
-      <workItem from="1677838819598" duration="63000" />
-      <workItem from="1677842216301" duration="113000" />
-      <workItem from="1677864010000" duration="8031000" />
-      <workItem from="1677882447818" duration="5423000" />
-      <workItem from="1677944640586" duration="13334000" />
-      <workItem from="1678056840016" duration="185000" />
-      <workItem from="1678099885680" duration="3154000" />
-      <workItem from="1678111621500" duration="3691000" />
-      <workItem from="1678189897923" duration="13084000" />
-      <workItem from="1678207716297" duration="6000" />
-      <workItem from="1678281369733" duration="19320000" />
-      <workItem from="1678351153852" duration="3943000" />
-      <workItem from="1678364808838" duration="412000" />
-      <workItem from="1678370799709" duration="2466000" />
-      <workItem from="1678443346233" duration="258000" />
-      <workItem from="1678450546567" duration="247000" />
-      <workItem from="1678450872492" duration="169000" />
-      <workItem from="1678451150707" duration="10000" />
-      <workItem from="1678468691475" duration="599000" />
-      <workItem from="1678471950382" duration="209000" />
-      <workItem from="1678716100325" duration="4000" />
-      <workItem from="1678717133300" duration="27000" />
-      <workItem from="1678848204795" duration="6602000" />
-      <workItem from="1678872915141" duration="1962000" />
-      <workItem from="1678875898433" duration="3893000" />
-      <workItem from="1678900664595" duration="13458000" />
-      <workItem from="1678962016067" duration="5045000" />
-      <workItem from="1678973925286" duration="4175000" />
-      <workItem from="1678987563890" duration="65000" />
-      <workItem from="1679055257729" duration="4609000" />
-      <workItem from="1679062036279" duration="474000" />
-      <workItem from="1679077967259" duration="5746000" />
-      <workItem from="1679138236137" duration="24470000" />
-      <workItem from="1679300077093" duration="10542000" />
-      <workItem from="1679321345335" duration="2035000" />
-      <workItem from="1679389518236" duration="83000" />
-      <workItem from="1679392116693" duration="17783000" />
-      <workItem from="1679480297624" duration="2573000" />
-      <workItem from="1679483067595" duration="1043000" />
-      <workItem from="1679498322532" duration="17045000" />
-      <workItem from="1679522800545" duration="654000" />
-      <workItem from="1679560168291" duration="5087000" />
-      <workItem from="1679571662849" duration="914000" />
-      <workItem from="1679580066656" duration="1361000" />
-      <workItem from="1679592485257" duration="620000" />
-      <workItem from="1679689661593" duration="6907000" />
-      <workItem from="1679738192451" duration="5538000" />
-      <workItem from="1679891930959" duration="271000" />
-      <workItem from="1679892333323" duration="5866000" />
-      <workItem from="1679898498359" duration="152000" />
+      <updated>1679899644243</updated>
+      <workItem from="1679899646557" duration="4855000" />
+      <workItem from="1680011391250" duration="640000" />
+      <workItem from="1680019334155" duration="13791000" />
+      <workItem from="1680083636581" duration="558000" />
+      <workItem from="1680085013590" duration="5430000" />
+      <workItem from="1680104544844" duration="3439000" />
+      <workItem from="1680113363679" duration="59000" />
+      <workItem from="1680171584395" duration="302000" />
     </task>
-    <task id="LOCAL-00001" summary="Commit 1">
-      <created>1676999497253</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1676999497253</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Commit 1">
-      <created>1676999517035</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1676999517035</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Commit 1">
-      <created>1677000644432</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1677000644432</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Commit 2">
-      <created>1678299310830</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1678299310830</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Commit 2">
-      <created>1678717145894</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1678717145894</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Commit 2">
-      <created>1678717156296</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1678717156296</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Commit 2">
-      <created>1678974149090</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1678974149090</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Commit 2">
-      <created>1679389533963</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1679389533963</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Commit 2">
-      <created>1679522944862</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1679522944862</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Commit 2">
-      <created>1679690802970</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1679690802970</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Commit 2">
-      <created>1679690862007</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1679690862007</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Commit 2">
-      <created>1679896771344</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1679896771345</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="back+front" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="Commit 1" />
-    <MESSAGE value="Commit 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit 2" />
   </component>
 </project>
