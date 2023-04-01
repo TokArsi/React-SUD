@@ -1,12 +1,11 @@
-import express, {response} from "express"
+import express from "express"
 import * as path from "path"
 import cors from 'cors'
 import mongoose from "mongoose";
-import BoardTitles from './models/board-titles-schema.js'
 import BoardData from './models/board-data-schema.js'
 import multer from "multer"
 import * as bodyParser from "express";
-import os from 'os';
+
 const corsOptions ={
     origin:'*',
     credentials:true,            //access-control-allow-credentials:true
@@ -46,34 +45,27 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: false}));
 app.use(bodyParser.json({limit: '50mb', extended: false}));
 app.use(cors(corsOptions)) // Use this after the variable declaration
 app.use(cors());
-app.get('/board-titles', (req, res) => {
-    BoardTitles.find()
-            .then((result) => result.map(({title, vector}) =>{
-                return {title, vector}
-            }))
-            .then((result) => res.json(result))
-            .catch((er) => console.log(er))
-})
+
 app.get('/board-data', (req, res) => {
     BoardData.find()
-        .then((result) => result.map(({_id, img_link, company, position, duration, job_id, status}) => {
-            return {_id, img_link, company, position, duration, job_id, status}
+        .then((result) => result.map(({_id, Logo, Company, Position, Duration, Job_ID, Status}) => {
+            return {_id, Logo, Company, Position, Duration, Job_ID, Status}
         }))
         .then((result) => res.json(result))
         .catch((error) => console.log(error))
 });
-app.post('/images', upload.single('img_link'), (req, res) => {
+app.post('/images', upload.single('Logo'), (req, res) => {
     res.json(`http://localhost:3002/images/${req.file.filename}`);
 })
 app.post('/post-request', (req, res) => {
     console.log(JSON.parse(JSON.stringify(req.body)));
-    const boardData = new BoardData(req.body)
+    const boardData = new BoardData(req.body);
     boardData.save()
         .then((result) => {
-            res.json(result)
-            console.log('Saved successfully')
+            res.json(result);
+            console.log('Saved successfully');
         })
-        .catch((error) => console.log(error))
+        .catch((error) => console.log(error));
 })
 app.delete('/request-delete', (req, res) => {
     console.log(req.body);

@@ -41,4 +41,3 @@ const BottomComponent = (props) => {
     </div>
     );
 }
-export default BottomComponent;

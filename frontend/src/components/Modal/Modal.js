@@ -15,7 +15,16 @@ export const Modal = ({keeper, setKeeper, active, setActive, children}) => {
     return ReactDOM.createPortal(
         <div className = {active? "modal active" : "modal"} onClick={() => setActive(false)}>
             <div className={active? "modal__content active" : "modal__content"} onClick={(e) => e.stopPropagation()}>
-                {children}
+                <div className="container">
+                    <div className="closeBox">
+                        <div className="cancel-button" onClick={() => {setActive(false);}}>
+                            <img src="/img/closebox.png" alt=""/>
+                        </div>
+                    </div>
+                    <div className="content">
+                        {children}
+                    </div>
+                </div>
             </div>
         </div>, el);
 };

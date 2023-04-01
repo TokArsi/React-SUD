@@ -64,6 +64,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: break-spaces;
+  word-break: break-word;
 }
 .status-board .table .table-columns table tbody tr td:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(8)):not(:nth-child(9)) {
   padding-left: 90px;

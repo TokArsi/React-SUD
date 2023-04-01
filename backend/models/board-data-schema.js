@@ -2,27 +2,27 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 const BoardDataScheme = new Schema({
-    img_link: {
+    Logo: {
         type: String,
         required: true
     },
-    company: {
+    Company: {
         type: String,
         required: true
     },
-    position: {
+    Position: {
         type: String,
         required: true
     },
-    duration: {
+    Duration: {
         type: String,
         required: true
     },
-    job_id: {
+    Job_ID: {
         type: String,
         required: true
     },
-    status: {
+    Status: {
         type: String,
         required: true
     },
