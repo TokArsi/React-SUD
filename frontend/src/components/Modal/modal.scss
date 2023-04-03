@@ -21,9 +21,6 @@
     transition: 0.4s all;
 
     .container {
-      display: flex;
-      flex-direction: column;
-
       .closeBox {
         display: flex;
         justify-content: flex-end;
@@ -38,9 +35,8 @@
       }
 
       .content {
-        display: flex;
-        flex-direction: column;
-
+        width: fit-content;
+        height: fit-content;
         .inputs{
           display: flex;
           position: relative;

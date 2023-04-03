@@ -18,9 +18,27 @@
   display: flex;
   justify-content: flex-end;
 }
+.status-board .tools .tool.search {
+  display: flex;
+}
+.status-board .tools .tool.search input {
+  display: none;
+}
 .status-board .tools img {
+  align-self: center;
   height: 14px;
   width: 14px;
+}
+.status-board .tools .tool.search:hover input {
+  display: block;
+  border: none;
+  border-bottom: 2px solid transparent;
+  outline: none;
+  background: transparent;
+  transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
+}
+.status-board .tools .tool.search:hover input:focus {
+  border-bottom: 2px solid #F9F0DA;
 }
 .status-board .tool {
   margin-left: 11px;

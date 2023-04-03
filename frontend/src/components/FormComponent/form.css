@@ -1,3 +1,26 @@
-
+.form {
+  display: flex;
+}
+.form .form-group:not(:first-child) {
+  padding-bottom: 5px;
+}
+.form .form-group:not(:first-child) input, .form .form-group:not(:first-child) label {
+  display: block;
+}
+.form .form-group:not(:first-child) .form-field {
+  background: #F8F8F8;
+  border: 1px solid #D8D8D8;
+  padding-bottom: 5px;
+}
+.form .form-group:not(:first-child) label {
+  padding-bottom: 5px;
+}
+.form .form-logo {
+  align-self: center;
+}
+.form .form-logo img {
+  width: 200px;
+  height: 200px;
+}
 
 /*# sourceMappingURL=form.css.map */

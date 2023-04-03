@@ -7,7 +7,11 @@ const Form = ({data, setData, modalActiveForSave, setModalActiveForSave, keeper,
     const [isVisible, setIsVisible] = useState(false)
     const form = useRef(null);
     const input = useRef(null);
-    const [hasData, setHasData] = useState(false)
+    const [hasData, setHasData] = useState(false);
+    const [isFileDownloaded, setIsFileDownloaded] = useState({
+        status: false,
+        url : ''
+    });
     let arrayOfInputsValue = {};
 
     useEffect(()=>{
@@ -22,7 +26,13 @@ const Form = ({data, setData, modalActiveForSave, setModalActiveForSave, keeper,
             form.current.reset();
             setIsVisible(false);
         }
-    }, [modalActiveForSave, modalActiveForUpdate])
+        if (isFileDownloaded.status)
+        {
+            console.log('Файл загружен')
+        }
+    }, [modalActiveForSave, modalActiveForUpdate, isFileDownloaded])
+
+
 
 
     const isValidForm = (e, arrayOfValidInputs) => {
@@ -168,6 +178,15 @@ const Form = ({data, setData, modalActiveForSave, setModalActiveForSave, keeper,
         }
     }
 
+    const showLogo = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+            setIsFileDownloaded({status: true, url: reader.result});
+        }
+        reader.readAsDataURL(file);
+    }
+
     return (
         <form className="form" ref = {form}
               id = {hasData
@@ -175,27 +194,35 @@ const Form = ({data, setData, modalActiveForSave, setModalActiveForSave, keeper,
                   : "form-to-save"}
               onSubmit={(e) => afterOnSubmit(hasData, e)}
         >
-            {Object.keys(Object(data[0])).map((item, index) =>
-                    {
-                        if (item!=='_id' && !hasData)
-                            return (
-                                <div key={index} className="form-group">
-                                    <label htmlFor={item}>{item}</label>
-                                    <input type={item === 'Logo'
-                                        ? 'file'
-                                        : 'text'}
-                                           name = {item}
-                                           className="form-field"
-                                           onChange={(e) => {
-                                               makeArrayOfInputs(e.target.name, e.target.value);
-                                               isValidForm(e);
+            <div className="form-group-wrapper">
+                {Object.keys(Object(data[0])).map((item, index) =>
+                {
+                    if (item!=='_id' && !hasData)
+                        return (
+                            <div key={index} className="form-group">
+                                <label htmlFor={item}>{item}</label>
+                                <input type={item === 'Logo'
+                                    ? 'file'
+                                    : 'text'}
+                                       name = {item}
+                                       className={item === 'Logo'
+                                           ? "form-field-logo"
+                                           : "form-field"}
+                                       ref  = {item === 'Logo'
+                                           ? input
+                                           : null}
+                                       onChange={(e) => {
+                                           makeArrayOfInputs(e.target.name, e.target.value);
+                                           isValidForm(e);
+                                           if (item === 'Logo') {
+                                           }
                                            }}
-                                    />
-                                </div>
-                            )
-                        else
-                            if (hasData === true && item!=='_id')
-                                return (
+                                />
+                            </div>
+                        )
+                    else
+                    if (hasData === true && item!=='_id')
+                        return (
                             <div key={index} className="form-group">
                                 <label htmlFor={item}>{item}</label>
                                 <input id={item=== 'Logo'
@@ -206,11 +233,16 @@ const Form = ({data, setData, modalActiveForSave, setModalActiveForSave, keeper,
                                            : 'text'}
                                        defaultValue={keeper[item]}
                                        name = {item}
-                                       className = "form-field"
+                                       className={item === 'Logo'
+                                           ? "form-field-logo"
+                                           : "form-field"}
                                        hidden = {item === 'Logo'
                                            ? !isVisible
                                            : null
-                                                }
+                                       }
+                                       ref  = {item === 'Logo'
+                                           ? input
+                                           : null}
                                        onChange={(e) => {
                                            makeArrayOfInputs(e.target.name, e.target.value);
                                            isValidForm(e);
@@ -218,18 +250,26 @@ const Form = ({data, setData, modalActiveForSave, setModalActiveForSave, keeper,
                                 />
                             </div>
                         )
-                    })}
-            <button type="submit">Submit</button>
-            {hasData &&  <button type="button" onClick={() => setIsVisible(true)}>Change logo</button>}
-            <button type="button"
-                    onClick={() => {
-                        if(hasData === true) {
-                            setModalActiveForUpdate(false);
-                        }
-                        else {
-                            setModalActiveForSave(false);
-                        }
-            }}>Close</button>
+                })}
+                <button type="submit">Submit</button>
+                {hasData &&
+                    <button
+                    type="button"
+                    onClick={() => setIsVisible(true)}
+                    >Change logo</button>}
+                <button type="button"
+                        onClick={() => {
+                            if(hasData === true) {
+                                setModalActiveForUpdate(false);
+                            }
+                            else {
+                                setModalActiveForSave(false);
+                            }
+                        }}>Close</button>
+            </div>
+            <div className="form-logo">
+                {isFileDownloaded.status && <img src={isFileDownloaded.url} alt=""/>}
+            </div>
         </form>
     );
             }

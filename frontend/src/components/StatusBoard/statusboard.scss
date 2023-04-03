@@ -21,10 +21,34 @@
     display: flex;
     justify-content: flex-end;
 
+    .tool.search{
+      display: flex;
+      input{
+        display: none;
+      }
+
+    }
     img {
+      align-self: center;
       height: 14px;
       width: 14px;
     }
+    .tool.search:hover{
+      input{
+        display: block;
+        border: none;
+        border-bottom: 2px solid transparent;
+        outline: none;
+        background: transparent;
+        transition: .4s cubic-bezier(0, 0.8, 0, 1);
+      }
+      input:focus {
+        border-bottom: 2px solid #F9F0DA;
+      }
+    }
+
+
+
   }
 
   .tool {
