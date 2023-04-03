@@ -108,14 +108,16 @@ const StatusBoard = () => {
             if (e.target.value === '') {
                 setData(originalData)
             }
-            const searchResult = originalData.filter((objectData) => {
-                const lowerSearchValue = searchValue.toLowerCase();
-                if (Object.values(objectData).map((stringData) => stringData.toLowerCase()).includes(lowerSearchValue))
-                {
-                    return objectData;
-                }
-            })
-            setData(searchResult);
+            else {
+                const searchResult = originalData.filter((objectData) => {
+                    const lowerSearchValue = searchValue.toLowerCase();
+                    if (Object.values(objectData).map((stringData) => stringData.toLowerCase()).includes(lowerSearchValue))
+                    {
+                        return objectData;
+                    }
+                })
+                setData(searchResult);
+            }
         }
     }
     const handleKeyPress = (e) => {
@@ -145,7 +147,7 @@ const StatusBoard = () => {
                             type="text"
                             placeholder="Keywords ..."
                             onChange={handleSearchChange}
-                            onKeyDown={handleKeyPress}
+                            onKeyDown={(e) => handleKeyPress(e)}
                         />
                         <img
                             src="/img/search-option.png"
