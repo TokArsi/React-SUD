@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import './statusboard.scss'
-import {Modal} from "../Modal/Modal";
-import Form from "../FormComponent/Form.js";
+import {Modal} from "../Modal/Modal"
+import Form from "../FormComponent/Form.js"
+import FormGenerator from "../ReusableForm/FormGenerator";
 
 
 const deletedItems = (data, checkedCheckBoxes) => data.filter((item) => !checkedCheckBoxes.includes(item._id))
@@ -9,12 +10,13 @@ const StatusBoard = () => {
     const [data, setData] = useState([]);
     const [modalActiveForSave, setModalActiveForSave] = useState(false);
     const [modalActiveForUpdate, setModalActiveForUpdate] = useState(false);
-    const [keeper, setKeeper] = useState({})
-    const [checkedCheckBoxes, setCheckedCheckBoxes] = useState([])
-    const [isHovered, setIsHovered] = useState(false);
+    const [updatedData, setUpdatedData] = useState({})
+    const [deletedData, setDeletedData] = useState([])
     const [searchValue, setSearchValue] = useState(null);
     const [originalData, setOriginalData] = useState([]);
-    console.log(searchValue)
+    const [checked, setChecked] = useState(false);
+    const [inputValues, setInputValues] = useState({});
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
         fetch("http://localhost:3002/board-data")
@@ -26,22 +28,112 @@ const StatusBoard = () => {
             .then((data) => {
                 setData(data);
                 setOriginalData(data);
- })
+            })
+        if(!modalActiveForUpdate)
+            setUpdatedData({})
     }, [])
 
-    const requestToServerForDelete = (checkedCheckBoxes) => {
-        if (checkedCheckBoxes.length !== 0)
+    const setInputValuesState = (e) => {
+        setInputValues(prevState => {
+            return {
+                ...prevState,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
+    const saveNewData = (e) => {
+        console.log(inputValues)
+        const id = document.getElementById(e.target.id);
+        const formData = new FormData(id);
+        console.log(formData.get("Logo"))
+        fetch('http://localhost:3002/images', {
+            mode: 'cors',
+            method: 'POST',
+            body: formData
+        })
+            .then((res) => res.json()
+                .then((response) => {
+                    inputValues.Logo = response;
+                    console.log(inputValues)
+                }))
+            .then(() => {
+                    fetch('http://localhost:3002/post-request', {
+                        mode: 'cors',
+                        method: 'POST',
+                        headers: new Headers({'content-type': 'application/json', 'boundary': 'something'}),
+                        body: JSON.stringify(inputValues)
+                    })
+                        .then(res => res.json())
+                        .then((result) => setData(prevState => [...prevState, result]))
+                        .then(() => {
+                            setModalActiveForSave(false);
+                        })
+                        .catch((error) => console.log(error))
+                }
+            )
+        setModalSaveClose()
+    }
+
+    const updateData = (copy, data) => {
+        fetch('http://localhost:3002/request-update', {
+            method: "PUT",
+            headers: new Headers({'content-type': 'application/json', 'boundary': 'something'}),
+            body: JSON.stringify(copy)
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                const index = data.findIndex(item => item._id === result._id);
+                const newData = [...data]
+                newData[index] = result;
+                setData(newData);
+            })
+    }
+
+    const updateDataWithLogo = (e) => {
+        console.log(inputValues)
+        const id = document.getElementById(e.target.id);
+        const file = document.getElementById('Logo')
+        console.log('file', file.files[0])
+        const copy = {};
+        Object.assign(copy, updatedData)
+        for (let i in copy) {
+            for (let j in inputValues) {
+                if (j === i)
+                    copy[i] = inputValues[j];
+            }
+        }
+        console.log('copy: ', copy)
+            if (file.files[0]) {
+                const formData = new FormData(id);
+                console.log('image: ', formData.get("Logo"));
+                fetch('http://localhost:3002/images', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then((res) => res.json())
+                    .then((result) => {
+                        copy.Logo = result;
+                        return copy;
+                    })
+                    .then((copy) => {
+                        updateData(copy, data);
+                    })
+            } else updateData(copy, data);
+        setModalUpdateClose()
+    }
+
+    const deleteItems = (deletedData) => {
+        if (deletedData.length !== 0)
             fetch('http://localhost:3002/request-delete', {
                 method: "DELETE",
                 headers: new Headers({'content-type': 'application/json', 'boundary': 'something'}),
-                body: JSON.stringify(checkedCheckBoxes)
+                body: JSON.stringify(deletedData)
             })
                 .then((res) => {
-                    const result = deletedItems(data, checkedCheckBoxes);
+                    const result = deletedItems(data, deletedData);
                     setData(result);
                     data.map((item) => {
                         const p = document.getElementById(item._id);
-                        p.checked = false;
                         return item;
                     })
                 })
@@ -49,26 +141,13 @@ const StatusBoard = () => {
 
         else console.log("Id's array is empty!!!");
     }
-
-    const CheckboxChecked = (checked, id) => {
-        const temp = checkedCheckBoxes;
-        let count = 0;
-        if (checked === false) {
-            temp.map((i, index) => {
-                if (i === id)
-                    temp.splice(index, 1)
-            })
-        } else {
-            temp.map((i) => {
-                if (i === id)
-                    count++;
-            })
-            if (count === 0) {
-                temp.push(id);
-            }
-        }
-        console.log(temp)
-        setCheckedCheckBoxes(temp);
+    const selectCheckBox = (_id) => {
+        setChecked(!checked)
+        setDeletedData(prevState => {
+            return prevState.includes(_id)
+                ? prevState.filter((v) => v !== _id)
+                : [...prevState, _id]
+        })
     }
 
     const requestToDeleteOldLogo = (data) => {
@@ -82,18 +161,11 @@ const StatusBoard = () => {
     const dataForUpdate = (id, keeper, data) => {
         data.map((item) => {
                 if (item._id === id) {
-                    setKeeper(item)
+                    setUpdatedData(item)
                 }
             }
         )
     }
-    const handleMouseEnter = () => {
-        setIsHovered(true);
-    };
-
-    const handleMouseLeave = () => {
-        setIsHovered(false);
-    };
 
     const getSearchValue = (e) => {
         setSearchValue(e.target.value);
@@ -101,11 +173,10 @@ const StatusBoard = () => {
 
     const handleSearchChange = (e) => {
         getSearchValue(e);
-
     }
     const findData = (e) => {
         {
-            if (e.target.value === '') {
+            if (e.target.value==='') {
                 setData(originalData)
             }
             else {
@@ -121,10 +192,90 @@ const StatusBoard = () => {
         }
     }
     const handleKeyPress = (e) => {
-        if (e.keyCode === 13) {
+        if (e.keyCode===13) {
             findData(e)
         }
     }
+    const setModalSaveClose = () => {
+        setModalActiveForSave(false);
+    }
+    const setModalUpdateClose = () => {
+        setModalActiveForUpdate(false);
+    }
+
+    const formElementsUpdate =
+        {
+             title: 'Update data',
+             inputAttributes: {
+                names: Object.keys(Object(data[0])).filter(item => item!=='_id') ,
+                defaultValue:
+                    Object.keys(updatedData).reduce((acc, current) => {
+                        if(current!=='_id')
+                            return [...acc, updatedData[current]];
+                        else return [...acc]
+                    }, []),
+                 types: ['file', 'text', 'text', 'text', 'text', 'text'],
+                 placeholders: [
+                     '',
+                     'Enter company name...',
+                     'Enter position name...',
+                     'Enter duration name...',
+                     'Enter Job_ID number...',
+                     'Enter Status name...',
+                 ],
+                 OnChange: [setInputValuesState]
+             },
+            formButtons: {
+                submitButtonName: 'Update',
+                resetButtonName: 'Reset',
+                buttons: [
+                    {
+                        type: 'button',
+                        name: 'Close',
+                        OnClick: setModalUpdateClose
+                    }
+                ],
+            },
+            OnSubmit: updateDataWithLogo
+        }
+    const formElementsSave =
+        {
+            title  : 'Save data',
+            inputAttributes: {
+                names : Object.keys(Object(data[0])).filter(item => item!=='_id') ,
+                defaultValue: '',
+                types: ['file', 'text', 'text', 'text', 'text', 'text'],
+                placeholders: [
+                    '',
+                    'Enter company name...',
+                    'Enter position name...',
+                    'Enter duration name...',
+                    'Enter Job_ID number...',
+                    'Enter Status name...',
+                ],
+                OnChange: [setInputValuesState],
+            },
+            formButtons: {
+                submitButtonName: 'Save',
+                resetButtonName: 'Reset',
+                buttons: [
+                    {
+                    type: 'button',
+                    name: 'Close',
+                    OnClick: setModalSaveClose
+                }
+                ],
+            },
+            OnSubmit: saveNewData
+        }
+
+
+
+    console.log(formElementsUpdate);
+    console.log(formElementsSave);
+    console.log(inputValues)
+    // console.log('updatedData: ', updatedData)
+
 
 
     return (
@@ -158,7 +309,7 @@ const StatusBoard = () => {
                     <div id="delete-option" className="tool" onClick={() => {
                         const isConfirmed = window.confirm('Are you sure about deleting data?');
                         if (isConfirmed)
-                            requestToServerForDelete(checkedCheckBoxes);
+                            deleteItems(deletedData);
                     }}>
                         <img src="/img/delete-option.png" alt="lol"/>
                     </div>
@@ -185,8 +336,11 @@ const StatusBoard = () => {
                             <tr key={index}>
                                 <td className="td-data">
                                     <div className="checkbox">
-                                        <input id={_id} type="checkbox"
-                                               onChange={(e) => CheckboxChecked(e.currentTarget.checked, e.currentTarget.id)}/>
+                                        <input
+                                            type="checkbox"
+                                            defaultChecked={checked}
+                                            onChange={() =>
+                                                selectCheckBox(_id)}/>
                                     </div>
                                 </td>
                                 <td className="td-data logo">
@@ -214,7 +368,7 @@ const StatusBoard = () => {
                                     <div className="tool-bar">
                                         <div className="editor">
                                             <img onClick={() => {
-                                                dataForUpdate(_id, keeper, data);
+                                                dataForUpdate(_id, updatedData, data);
                                                 setModalActiveForUpdate(true)
                                             }} src="/img/pencil-edit.png" alt=""/>
                                         </div>
@@ -225,7 +379,7 @@ const StatusBoard = () => {
                                         <img onClick={() => {
                                             const isConfirmed = window.confirm('Are you sure about deleting this data?');
                                             if (isConfirmed) {
-                                                requestToServerForDelete([_id])
+                                                deleteItems([_id])
                                             }
                                         }} src="/img/delete-option.png" alt=""/>
                                     </div>
@@ -238,22 +392,33 @@ const StatusBoard = () => {
             </div>
             <button onClick={() => setModalActiveForSave(true)}>Add new data</button>
             <Modal active={modalActiveForSave} setActive={setModalActiveForSave}>
-                <Form
-                    data = {data}
-                    setData = {setData}
-                    modalActiveForSave = {modalActiveForSave}
-                    setModalActiveForSave = {setModalActiveForSave}
-                    keeper = {keeper}
+                <FormGenerator
+                    formData={formElementsSave}
+                    formActive={modalActiveForSave}
                 />
+
+                {/*<Form*/}
+                {/*    data = {data}*/}
+                {/*    setData = {setData}*/}
+                {/*    modalActiveForSave = {modalActiveForSave}*/}
+                {/*    setModalActiveForSave = {setModalActiveForSave}*/}
+                {/*    updated = {updatedData}*/}
+                {/*    setUpdatedData={setUpdatedData}*/}
+                {/*/>*/}
             </Modal>
-            <Modal keeper={keeper} setKeeper={setKeeper} active={modalActiveForUpdate} setActive={setModalActiveForUpdate}>
-                <Form
-                    data = {data}
-                    setData = {setData}
-                    setModalActiveForUpdate= {setModalActiveForUpdate}
-                    keeper = {keeper}
-                    modalActiveForUpdate = {modalActiveForUpdate}
+            <Modal keeper={updatedData} setKeeper={setUpdatedData} active={modalActiveForUpdate} setActive={setModalActiveForUpdate}>
+                <FormGenerator
+                    formData={formElementsUpdate}
+                    formActive={modalActiveForUpdate}
                 />
+                {/*<Form*/}
+                {/*    data={data}*/}
+                {/*    setData={setData}*/}
+                {/*    setModalActiveForUpdate={setModalActiveForUpdate}*/}
+                {/*    updatedData={updatedData}*/}
+                {/*    modalActiveForUpdate={modalActiveForUpdate}*/}
+                {/*    setUpdatedData={setUpdatedData}*/}
+                {/*/>*/}
             </Modal>
         </div>
     );

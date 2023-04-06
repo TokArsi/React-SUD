@@ -36,7 +36,8 @@ ul {
 .container {
   max-width: calc(100% - 6%);
   margin: 0 auto;
-  padding: 0px 39px
+  padding: 0 39px;
+  background-color: #F8F8F8;
 }
 @media(max-width: 1170px) {
   .container {

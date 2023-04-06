@@ -1,6 +1,5 @@
 import './App.css';
 import Top from "./components/TopComponent/Top";
-import BottomComponent from "./components/BottomComponent/BottomComponent";
 import React, {useEffect, useState} from 'react';
 import StatusBoard from "./components/StatusBoard/StatusBoard";
 import Roles from "./components/RoleComponent/Roles";

@@ -1,6 +1,7 @@
 .status-board {
   display: flex;
   flex-direction: column;
+  background-color: #F8F8F8;
 
   .status-board-tools {
     display: flex;
@@ -58,8 +59,8 @@
   .table {
     .table-columns {
       padding-top: 30px;
-      background: #FFFFFF;
-      box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.25);
+      background-color: #F8F8F8;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
       border-radius: 8px;
       table{
         table-layout: auto;
@@ -115,7 +116,7 @@
             td.td-data.logo{
               .border-box {
                 box-sizing: border-box;
-                background: #FFFFFF;
+                background-color: #F8F8F8;
                 position: relative;
                 display: flex;
                 height: 37px;
