@@ -397,7 +397,7 @@ const StatusBoard = () => {
                 </div>
             </div>
             <button onClick={() => setModalActiveForSave(true)}>Add new data</button>
-            <button onClick={() => handleCreateData()}>Link to Form</button>
+            <button onClick={() => handleCreateData()}>Create a new role in new page</button>
             <Modal active={modalActiveForSave} setActive={setModalActiveForSave}>
                 {modalActiveForSave && <FormGenerator
                     formData={formElementsCreate}
