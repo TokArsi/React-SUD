@@ -1,22 +1,28 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
+import {useNavigate} from 'react-router-dom';
 import './statusboard.scss'
 import {Modal} from "../Modal/Modal"
-import Form from "../FormComponent/Form.js"
 import FormGenerator from "../ReusableForm/FormGenerator";
+import input from "../Input/Input";
+import DataContext from "../../contexts/DataContext";
 
-
-const deletedItems = (data, checkedCheckBoxes) => data.filter((item) => !checkedCheckBoxes.includes(item._id))
 const StatusBoard = () => {
-    const [data, setData] = useState([]);
-    const [modalActiveForSave, setModalActiveForSave] = useState(false);
-    const [modalActiveForUpdate, setModalActiveForUpdate] = useState(false);
-    const [updatedData, setUpdatedData] = useState({})
-    const [deletedData, setDeletedData] = useState([])
+
     const [searchValue, setSearchValue] = useState(null);
-    const [originalData, setOriginalData] = useState([]);
     const [checked, setChecked] = useState(false);
-    const [inputValues, setInputValues] = useState({});
-    const [isVisible, setIsVisible] = useState(false);
+    const navigate = useNavigate();
+    const {setFormInformation,
+        updatedData, setUpdatedData,
+        createNewData,
+        updateDataWithLogo, deletedData,
+        data, setData, modalActiveForSave,
+        setModalActiveForSave, modalActiveForUpdate,
+        setModalActiveForUpdate,
+        setDeletedData, originalData,
+        setOriginalData, selectOldLogoFileNames,
+        deleteOldLogo, oldLogoFileNames,
+        setModalUpdateClose, setModalSaveClose,
+    } = useContext(DataContext);
 
     useEffect(() => {
         fetch("http://localhost:3002/board-data")
@@ -29,118 +35,209 @@ const StatusBoard = () => {
                 setData(data);
                 setOriginalData(data);
             })
-        if(!modalActiveForUpdate)
-            setUpdatedData({})
-    }, [])
+        // if(!modalActiveForUpdate)
+        //     setUpdatedData({})
+    }, []);
 
-    const setInputValuesState = (e) => {
-        setInputValues(prevState => {
-            return {
-                ...prevState,
-                [e.target.name]: e.target.value
-            }
+    console.log(updatedData)
+
+    const getOldFileNames = (deletedData) => {
+        data.map((item) => {
+            if(deletedData.includes(item._id))
+                selectOldLogoFileNames(item.Logo.split('/').pop())
         })
     }
-    const saveNewData = (e) => {
-        console.log(inputValues)
-        const id = document.getElementById(e.target.id);
-        const formData = new FormData(id);
-        console.log(formData.get("Logo"))
-        fetch('http://localhost:3002/images', {
-            mode: 'cors',
-            method: 'POST',
-            body: formData
-        })
-            .then((res) => res.json()
-                .then((response) => {
-                    inputValues.Logo = response;
-                    console.log(inputValues)
-                }))
-            .then(() => {
-                    fetch('http://localhost:3002/post-request', {
-                        mode: 'cors',
-                        method: 'POST',
-                        headers: new Headers({'content-type': 'application/json', 'boundary': 'something'}),
-                        body: JSON.stringify(inputValues)
-                    })
-                        .then(res => res.json())
-                        .then((result) => setData(prevState => [...prevState, result]))
-                        .then(() => {
-                            setModalActiveForSave(false);
-                        })
-                        .catch((error) => console.log(error))
-                }
-            )
-        setModalSaveClose()
-    }
 
-    const updateData = (copy, data) => {
-        fetch('http://localhost:3002/request-update', {
-            method: "PUT",
-            headers: new Headers({'content-type': 'application/json', 'boundary': 'something'}),
-            body: JSON.stringify(copy)
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                const index = data.findIndex(item => item._id === result._id);
-                const newData = [...data]
-                newData[index] = result;
-                setData(newData);
-            })
-    }
-
-    const updateDataWithLogo = (e) => {
-        console.log(inputValues)
-        const id = document.getElementById(e.target.id);
-        const file = document.getElementById('Logo')
-        console.log('file', file.files[0])
-        const copy = {};
-        Object.assign(copy, updatedData)
-        for (let i in copy) {
-            for (let j in inputValues) {
-                if (j === i)
-                    copy[i] = inputValues[j];
-            }
-        }
-        console.log('copy: ', copy)
-            if (file.files[0]) {
-                const formData = new FormData(id);
-                console.log('image: ', formData.get("Logo"));
-                fetch('http://localhost:3002/images', {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then((res) => res.json())
-                    .then((result) => {
-                        copy.Logo = result;
-                        return copy;
-                    })
-                    .then((copy) => {
-                        updateData(copy, data);
-                    })
-            } else updateData(copy, data);
-        setModalUpdateClose()
-    }
+    const deletedItems = (data, checkedCheckBoxes) => data.filter((item) => !checkedCheckBoxes.includes(item._id))
 
     const deleteItems = (deletedData) => {
-        if (deletedData.length !== 0)
+        if (deletedData)
+        {
+            getOldFileNames(deletedData);
             fetch('http://localhost:3002/request-delete', {
                 method: "DELETE",
                 headers: new Headers({'content-type': 'application/json', 'boundary': 'something'}),
                 body: JSON.stringify(deletedData)
             })
-                .then((res) => {
+                .then(() => {
                     const result = deletedItems(data, deletedData);
                     setData(result);
-                    data.map((item) => {
-                        const p = document.getElementById(item._id);
-                        return item;
-                    })
+                })
+                .then(() => {
+                    return deleteOldLogo(oldLogoFileNames);
                 })
                 .catch(error => alert(`Can not delete.\n Error description: ${error}`))
-
+        }
         else console.log("Id's array is empty!!!");
     }
+
+    const formElementsUpdate =
+        {
+            type: 'Update',
+            title: 'Update Role',
+            Inputs: [
+                {
+                    name: 'Logo',
+                    value: `${updatedData.Logo}`,
+                    type: 'file',
+                    placeholder: '',
+                    className: '',
+                    OnChange: () => console.log('update')
+                },
+                {
+                    name: 'Company',
+                    value: `${updatedData.Company}`,
+                    type: 'text',
+                    placeholder: '',
+                    className: '',
+                    OnChange: () => console.log('update')
+                },
+                {
+                    name: 'Position',
+                    value: `${updatedData.Position}`,
+                    type: 'text',
+                    placeholder: '',
+                    className: '',
+                    dataList: ['Visual Designer', 'Product Designer', 'Interactive Designer', 'UI/UX Designer'],
+                    OnChange: () => console.log('update')
+                },
+                {
+                    name: 'Duration',
+                    value: `${updatedData.Duration}`,
+                    type: 'text',
+                    placeholder: '',
+                    className: '',
+                    dataList: ['Full-time', '12-months'],
+                    OnChange: () => console.log('update')
+                },
+                {
+                    name: 'Job_ID',
+                    value: `${updatedData.Job_ID}`,
+                    type: 'text',
+                    placeholder: '',
+                    className: '',
+                    OnChange: () => console.log('create')
+                },
+                {
+                    name: 'Status',
+                    value: `${updatedData.Status}`,
+                    type: 'text',
+                    placeholder: '',
+                    className: '',
+                    dataList: ['Applied', 'Phone Interview', 'Round 2 Interview', 'Zoom Call'],
+                    OnChange: () => console.log('update')
+                }
+            ],
+            formButtons: [
+                {
+                    type: 'submit',
+                    name: 'Update',
+                    className: '',
+                    OnClick: () => {}
+                },
+                {
+                    type: 'reset',
+                    name: 'Reset',
+                    className: '',
+                    OnClick: () => {}
+                },
+                {
+                    type: 'button',
+                    name: 'Close',
+                    className: '',
+                    OnClick: () => {setModalUpdateClose()}
+                }
+            ],
+            OnSubmit: (e, values) => updateDataWithLogo(e, values)
+        }
+
+    const formElementsCreate =
+        {
+            type: 'Create',
+            title: 'NEW ROLE',
+            Inputs: [
+                {
+                    name: 'Logo',
+                    value: ``,
+                    type: 'file',
+                    placeholder: '',
+                    className: '',
+                    OnChange: () => console.log('create')
+                },
+                {
+                    name: 'Company',
+                    value: ``,
+                    type: 'text',
+                    placeholder: '',
+                    className: '',
+                    OnChange: () => console.log('create')
+                },
+                {
+                    name: 'Position',
+                    value: ``,
+                    type: 'text',
+                    placeholder: '',
+                    className: '',
+                    dataList: ['Visual Designer', 'Product Designer', 'Interactive Designer', 'UI/UX Designer'],
+                    OnChange: () => console.log('create')
+                },
+                {
+                    name: 'Duration',
+                    value: ``,
+                    type: 'text',
+                    placeholder: '',
+                    className: '',
+                    dataList: ['Full-time', '12-months'],
+                    OnChange: () => console.log('create')
+                },
+                {
+                    name: 'Job_ID',
+                    value: ``,
+                    type: 'text',
+                    placeholder: '',
+                    className: '',
+                    OnChange: () => console.log('create')
+                },
+                {
+                    name: 'Status',
+                    value: ``,
+                    type: 'text',
+                    placeholder: '',
+                    className: '',
+                    dataList: ['Applied', 'Phone Interview', 'Round 2 Interview', 'Zoom Call'],
+                    OnChange: () => console.log('create')
+                }
+            ],
+            formButtons: [
+                {
+                    type: 'submit',
+                    name: 'Create',
+                    className: '',
+                    OnClick: null
+                },
+                {
+                    type: 'reset',
+                    name: 'Reset',
+                    className: '',
+                    OnClick: null
+                },
+                {
+                    type: 'button',
+                    name: 'Close',
+                    className: '',
+                    OnClick: () =>  setModalSaveClose()
+                }
+            ],
+            OnSubmit:  (e, values)=> createNewData(e, values)
+        }
+
+    const handleClick = (id) => {
+        navigate(`/form/${id}`);
+    };
+    const handleCreateData = () => {
+        navigate(`/form/create`);
+    }
+
     const selectCheckBox = (_id) => {
         setChecked(!checked)
         setDeletedData(prevState => {
@@ -150,29 +247,21 @@ const StatusBoard = () => {
         })
     }
 
-    const requestToDeleteOldLogo = (data) => {
-        fetch('http://localhost:3002/request-delete-logo', {
-            method: "DELETE",
-            headers: new Headers({'content-type': 'application/json', 'boundary': 'something'}),
-            body: JSON.stringify(data)
-        })
-    }
-
-    const dataForUpdate = (id, keeper, data) => {
-        data.map((item) => {
+    const dataForUpdate = (id, data) => {
+           data.map((item) => {
                 if (item._id === id) {
-                    setUpdatedData(item)
+                     setUpdatedData(item);
                 }
             }
         )
     }
-
-    const getSearchValue = (e) => {
-        setSearchValue(e.target.value);
+    const handleKeyPress = (e) => {
+        if (e.keyCode===13) {
+            findData(e)
+        }
     }
-
     const handleSearchChange = (e) => {
-        getSearchValue(e);
+        setSearchValue(e.target.value);
     }
     const findData = (e) => {
         {
@@ -191,92 +280,8 @@ const StatusBoard = () => {
             }
         }
     }
-    const handleKeyPress = (e) => {
-        if (e.keyCode===13) {
-            findData(e)
-        }
-    }
-    const setModalSaveClose = () => {
-        setModalActiveForSave(false);
-    }
-    const setModalUpdateClose = () => {
-        setModalActiveForUpdate(false);
-    }
-
-    const formElementsUpdate =
-        {
-             title: 'Update data',
-             inputAttributes: {
-                names: Object.keys(Object(data[0])).filter(item => item!=='_id') ,
-                defaultValue:
-                    Object.keys(updatedData).reduce((acc, current) => {
-                        if(current!=='_id')
-                            return [...acc, updatedData[current]];
-                        else return [...acc]
-                    }, []),
-                 types: ['file', 'text', 'text', 'text', 'text', 'text'],
-                 placeholders: [
-                     '',
-                     'Enter company name...',
-                     'Enter position name...',
-                     'Enter duration name...',
-                     'Enter Job_ID number...',
-                     'Enter Status name...',
-                 ],
-                 OnChange: [setInputValuesState]
-             },
-            formButtons: {
-                submitButtonName: 'Update',
-                resetButtonName: 'Reset',
-                buttons: [
-                    {
-                        type: 'button',
-                        name: 'Close',
-                        OnClick: setModalUpdateClose
-                    }
-                ],
-            },
-            OnSubmit: updateDataWithLogo
-        }
-    const formElementsSave =
-        {
-            title  : 'Save data',
-            inputAttributes: {
-                names : Object.keys(Object(data[0])).filter(item => item!=='_id') ,
-                defaultValue: '',
-                types: ['file', 'text', 'text', 'text', 'text', 'text'],
-                placeholders: [
-                    '',
-                    'Enter company name...',
-                    'Enter position name...',
-                    'Enter duration name...',
-                    'Enter Job_ID number...',
-                    'Enter Status name...',
-                ],
-                OnChange: [setInputValuesState],
-            },
-            formButtons: {
-                submitButtonName: 'Save',
-                resetButtonName: 'Reset',
-                buttons: [
-                    {
-                    type: 'button',
-                    name: 'Close',
-                    OnClick: setModalSaveClose
-                }
-                ],
-            },
-            OnSubmit: saveNewData
-        }
-
-
-
     console.log(formElementsUpdate);
-    console.log(formElementsSave);
-    console.log(inputValues)
-    // console.log('updatedData: ', updatedData)
-
-
+    console.log(formElementsCreate);
 
     return (
         <div className="status-board">
@@ -368,8 +373,9 @@ const StatusBoard = () => {
                                     <div className="tool-bar">
                                         <div className="editor">
                                             <img onClick={() => {
-                                                dataForUpdate(_id, updatedData, data);
-                                                setModalActiveForUpdate(true)
+                                                dataForUpdate(_id, data)
+                                                setModalActiveForUpdate(true);
+                                                handleClick(_id);
                                             }} src="/img/pencil-edit.png" alt=""/>
                                         </div>
                                     </div>
@@ -379,7 +385,7 @@ const StatusBoard = () => {
                                         <img onClick={() => {
                                             const isConfirmed = window.confirm('Are you sure about deleting this data?');
                                             if (isConfirmed) {
-                                                deleteItems([_id])
+                                                deleteItems([_id]);
                                             }
                                         }} src="/img/delete-option.png" alt=""/>
                                     </div>
@@ -391,34 +397,18 @@ const StatusBoard = () => {
                 </div>
             </div>
             <button onClick={() => setModalActiveForSave(true)}>Add new data</button>
+            <button onClick={() => handleCreateData()}>Link to Form</button>
             <Modal active={modalActiveForSave} setActive={setModalActiveForSave}>
-                <FormGenerator
-                    formData={formElementsSave}
+                {modalActiveForSave && <FormGenerator
+                    formData={formElementsCreate}
                     formActive={modalActiveForSave}
-                />
-
-                {/*<Form*/}
-                {/*    data = {data}*/}
-                {/*    setData = {setData}*/}
-                {/*    modalActiveForSave = {modalActiveForSave}*/}
-                {/*    setModalActiveForSave = {setModalActiveForSave}*/}
-                {/*    updated = {updatedData}*/}
-                {/*    setUpdatedData={setUpdatedData}*/}
-                {/*/>*/}
+                />}
             </Modal>
-            <Modal keeper={updatedData} setKeeper={setUpdatedData} active={modalActiveForUpdate} setActive={setModalActiveForUpdate}>
-                <FormGenerator
+            <Modal active={modalActiveForUpdate} setActive={setModalActiveForUpdate}>
+                {modalActiveForUpdate && <FormGenerator
                     formData={formElementsUpdate}
                     formActive={modalActiveForUpdate}
-                />
-                {/*<Form*/}
-                {/*    data={data}*/}
-                {/*    setData={setData}*/}
-                {/*    setModalActiveForUpdate={setModalActiveForUpdate}*/}
-                {/*    updatedData={updatedData}*/}
-                {/*    modalActiveForUpdate={modalActiveForUpdate}*/}
-                {/*    setUpdatedData={setUpdatedData}*/}
-                {/*/>*/}
+                />}
             </Modal>
         </div>
     );

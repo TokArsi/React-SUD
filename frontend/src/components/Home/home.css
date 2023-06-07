@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+}
+.wrapper .left-side {
+  display: flex;
+  flex-direction: column;
+  padding-right: 36px;
+}
+.wrapper .right-side {
+  display: flex;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=home.css.map */

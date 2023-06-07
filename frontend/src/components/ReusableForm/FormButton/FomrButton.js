@@ -1,22 +1,13 @@
 import React, {useState} from "react";
 
-const FormButton = ({formButtons}) => {
+const FormButton = ({title, className, type, onClick }) => {
   return (
-      <div>
-          <div className="form-submit-button">
-              <button type="submit">{formButtons.submitButtonName}</button>
-          </div>
-          {formButtons.buttons.map(((button, index) => {
-              return (
-                  <div key={index} >
-                      <button type={button.type} onClick={button.OnClick}>{button.name}</button>
-                  </div>
-              )
-          }))}
-          <div className="form-reset-button">
-              <button type="reset">{formButtons.resetButtonName}</button>
-          </div>
-      </div>
+      <button
+          type={type}
+          className={className
+              ? `form-button ${className}`
+              : `form-button`}
+      >{title}</button>
   )
 }
 export default FormButton;

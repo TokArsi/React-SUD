@@ -1,0 +1,21 @@
+.form{
+  width: 100%;
+  .form-input-group{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    label{
+      padding-bottom: 5px;
+      font-family: Mulish, serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 18px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
+  }
+  .form-button-group{
+    display: flex;
+  }
+  padding-bottom: 30px;
+}
