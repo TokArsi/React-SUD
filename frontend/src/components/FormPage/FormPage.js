@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useLayoutEffect, useState} from "react";
 import FormGenerator from "../ReusableForm/FormGenerator";
 import {useNavigate, useParams} from "react-router-dom";
 import DataContext from "../../contexts/DataContext";
+import './formpage.scss'
 const FormPage = () => {
     const [formData, setFormData] = useState(null);
     const [formGeneratorData, setFormGeneratorData] = useState(null);
@@ -155,13 +156,6 @@ const FormPage = () => {
                     className: '',
                     OnClick: null
                 },
-                {
-                    type: 'button',
-                    name: 'Close',
-                    className: '',
-                    OnClick: () => {
-                    }
-                }
             ],
             OnSubmit: (e, values) => {
                 createNewData(e, values);

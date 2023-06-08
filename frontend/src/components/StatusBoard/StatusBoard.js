@@ -288,15 +288,6 @@ const StatusBoard = () => {
             <div className="status-board-tools">
                 <div className="title">Status Board</div>
                 <div className="tools">
-                    <div className="tool">
-                        <img src="/img/filter-option.png" alt="lol"/>
-                    </div>
-                    <div className="tool">
-                        <img src="/img/pencil-edit.png" alt="lol"/>
-                    </div>
-                    <div className="tool">
-                        <img src="/img/share-option.png" alt="lol"/>
-                    </div>
                     <div className="tool search">
                         <input
                             id="status-board-search-input"
