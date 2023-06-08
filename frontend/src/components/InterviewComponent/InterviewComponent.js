@@ -16,7 +16,7 @@ const InterviewComponent = () => {
                     <div className="content-block">
                         <div className="content-block-rectangle-1">Arsen</div>
                         <div className="content-block-rectangle-2">Toktogonov</div>
-                        <div className="content-block-rectangle-3"><a href="" target="_blank">GitHub: TokArsi</a></div>
+                        <div className="content-block-rectangle-3"><a href="https://github.com/TokArsi?tab=repositories" target="_blank">GitHub: TokArsi</a></div>
                     </div>
                 </div>
             </div>

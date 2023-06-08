@@ -396,8 +396,10 @@ const StatusBoard = () => {
                     </table>
                 </div>
             </div>
-            <button onClick={() => setModalActiveForSave(true)}>Add new data</button>
-            <button onClick={() => handleCreateData()}>Create a new role in new page</button>
+            <div className="modal-buttons">
+                <button className={'button-open-window'} onClick={() => setModalActiveForSave(true)}>Add new data</button>
+                <button className={'button-open-window'}onClick={() => handleCreateData()}>Add new data in new page</button>
+            </div>
             <Modal active={modalActiveForSave} setActive={setModalActiveForSave}>
                 {modalActiveForSave && <FormGenerator
                     formData={formElementsCreate}

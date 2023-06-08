@@ -7,6 +7,7 @@ const FormButton = ({title, className, type, onClick }) => {
           className={className
               ? `form-button ${className}`
               : `form-button`}
+          onClick={onClick}
       >{title}</button>
   )
 }

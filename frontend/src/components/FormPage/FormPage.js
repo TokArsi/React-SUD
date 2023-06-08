@@ -79,12 +79,6 @@ const FormPage = () => {
                     className: '',
                     OnClick: () => {}
                 },
-                {
-                    type: 'button',
-                    name: 'Close',
-                    className: '',
-                    OnClick: () => {}
-                }
             ],
             OnSubmit: (e, values) => {
                 updateDataWithLogo(e, values);

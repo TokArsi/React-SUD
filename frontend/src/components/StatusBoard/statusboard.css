@@ -19,26 +19,22 @@
   display: flex;
   justify-content: flex-end;
 }
-.status-board .tools .tool.search {
-  display: flex;
-}
-.status-board .tools .tool.search input {
-  display: none;
-}
 .status-board .tools img {
   align-self: center;
   height: 14px;
   width: 14px;
 }
-.status-board .tools .tool.search:hover input {
-  display: block;
+.status-board .tools .tool.search {
+  padding-bottom: 5px;
+}
+.status-board .tools .tool.search input {
   border: none;
   border-bottom: 2px solid transparent;
   outline: none;
   background: transparent;
   transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
 }
-.status-board .tools .tool.search:hover input:focus {
+.status-board .tools .tool.search input:focus {
   border-bottom: 2px solid #F9F0DA;
 }
 .status-board .tool {
@@ -124,6 +120,15 @@
 .status-board .table .table-columns table tbody tr td.td-data.tool-deleter {
   padding-left: 5px;
   padding-right: 15px;
+}
+.status-board .modal-buttons {
+  display: flex;
+  padding-bottom: 5px;
+}
+.status-board .modal-buttons .button-open-window {
+  width: 50%;
+  border-radius: 20px;
+  background-color: #F8F8F8;
 }
 
 /*# sourceMappingURL=statusboard.css.map */

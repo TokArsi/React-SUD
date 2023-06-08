@@ -16,11 +16,6 @@ export const Modal = ({keeper, setKeeper, active, setActive, children}) => {
         <div className = {active? "modal active" : "modal"} onClick={() => setActive(false)}>
             <div className={active? "modal__content active" : "modal__content"} onClick={(e) => e.stopPropagation()}>
                 <div className="container">
-                    <div className="closeBox">
-                        <div className="cancel-button" onClick={() => {setActive(false);}}>
-                            <img src="/img/closebox.png" alt=""/>
-                        </div>
-                    </div>
                     <div className="content">
                         {children}
                     </div>
